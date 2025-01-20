@@ -1,0 +1,15 @@
+{
+  "name": "csv-file-analysis",
+  "version": "1.0.0",
+  "description": "Es soll eine Anwendung erstellt werden, die Daten aus einer CSV-Datei analysiert und HTTP-Endpunkte bereitstellt, um Statistiken und Visualisierungen abzufragen. Die Anwendung soll in einem Docker-Container laufen.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Roman Kosovnenko",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
