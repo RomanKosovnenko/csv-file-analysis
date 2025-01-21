@@ -1,3 +1,4 @@
+import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
@@ -11,6 +12,7 @@ DataService.getInstance();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(morgan("tiny"));
 
 app.use("/api/v1", v1Routes);
