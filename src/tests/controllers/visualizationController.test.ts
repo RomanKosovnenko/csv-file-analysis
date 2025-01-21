@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getVisualization } from "../../controllers/visualizationController";
 import { DataService } from "../../services/dataService";
 import { BarChartVisualizationService } from "../../services/visualizationService";
+import { mockedData } from "../utils/testUtils";
 
 jest.mock("../../services/dataService");
 jest.mock("../../services/visualizationService");
@@ -22,7 +23,7 @@ describe("getVisualization", () => {
     };
 
     mockDataServiceInstance = {
-      getData: jest.fn().mockReturnValue([{ ID: 1, Name: "Test", Age: 30, Salary: 5000 }]),
+      getData: jest.fn().mockReturnValue(mockedData),
     } as unknown as jest.Mocked<DataService>;
 
     (DataService.getInstance as jest.Mock).mockReturnValue(mockDataServiceInstance);
@@ -38,11 +39,7 @@ describe("getVisualization", () => {
     await getVisualization(req as Request, res as Response);
 
     expect(mockDataServiceInstance.getData).toHaveBeenCalled();
-    expect(mockVisualizationServiceInstance.generateChart).toHaveBeenCalledWith(
-      [{ ID: 1, Name: "Test", Age: 30, Salary: 5000 }],
-      800,
-      600
-    );
+    expect(mockVisualizationServiceInstance.generateChart).toHaveBeenCalledWith(mockedData, 800, 600);
     expect(res.set).toHaveBeenCalledWith("Content-Type", "image/png");
     expect(res.send).toHaveBeenCalledWith(Buffer.from("mockBuffer"));
   });

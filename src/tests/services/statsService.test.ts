@@ -1,15 +1,7 @@
-import { Person } from "../../models/personSchema";
 import { StatsService } from "../../services/statsService";
+import { mockedData } from "../utils/testUtils";
 
 describe("StatsService", () => {
-  const data: Person[] = [
-    { ID: 1, Name: "Lola Schmitt", Age: 25, Salary: 3000 },
-    { ID: 2, Name: "Mina Johns", Age: 35, Salary: 4000 },
-    { ID: 3, Name: "Elda Zemlak", Age: 45, Salary: 5000 },
-    { ID: 4, Name: "Rocio Robel", Age: 55, Salary: 6000 },
-    { ID: 6, Name: "Chaz Kshlerin", Age: 65, Salary: 7000 },
-  ];
-
   let statsService: StatsService;
 
   beforeEach(() => {
@@ -17,7 +9,7 @@ describe("StatsService", () => {
   });
 
   it("should calculate statistics correctly", () => {
-    const result = statsService.getStatistics(data);
+    const result = statsService.getStatistics(mockedData);
 
     expect(result.minAge).toBe(25);
     expect(result.averageAge).toBe(45);
@@ -43,7 +35,7 @@ describe("StatsService", () => {
   });
 
   it("should handle data with one person", () => {
-    const result = statsService.getStatistics(data.slice(1, 2));
+    const result = statsService.getStatistics(mockedData.slice(1, 2));
 
     expect(result.minAge).toBe(35);
     expect(result.averageAge).toBe(35);
