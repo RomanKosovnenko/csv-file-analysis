@@ -48,7 +48,7 @@ docker-compose up
 3. Open the browser and go to the following URL for statistics:
 
 ```bash
-http://localhost:3000/api/v1/statistics
+http://localhost:3000/api/v1/stats
 ```
 
 4. Open the browser and go to the following URL for visualization:
