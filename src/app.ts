@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import express, { Request, Response } from "express";
+import express from "express";
 import morgan from "morgan";
 import v1Routes from "./routes/v1";
 import { DataService } from "./services/dataService";
@@ -14,10 +14,6 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 app.use("/api/v1", v1Routes);
-
-app.get("/", (req: Request, res: Response): void => {
-  res.send("Hello World!");
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
